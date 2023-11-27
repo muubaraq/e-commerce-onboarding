@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Nentonu">
+    <meta property="og:description" content="Shopify onboarding dashboard">
+    <meta name="description" content="A shopify onboarding webpage">
+    <title>Shopify Admin</title>
+    <link rel="icon" sizes="192x192" href="https://crushingit.tech/hackathon-assets/shopify-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./app.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a
+        target="_blank"
+        class="header-logo"
+        aria-label="shopify logo"
+        href="https://shopify.com"
+        rel="noopener noreferrer"
+      >
+        <img
+          alt="shopify logo"
+          id="header-logo--desktop"
+          src="https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg"
+        />
+        <img
+          alt="shopify logo"
+          id="header-logo--mobile"
+          src="https://crushingit.tech/hackathon-assets/shopify-icon.svg"
+        />
+      </a>
+
+      <div class="header-search" aria-label="search bar">
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="#B5B5B5"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12.3226 13.3833C11.3996 14.0841 10.2484 14.5 9 14.5C5.96243 14.5 3.5 12.0376 3.5 9C3.5 5.96243 5.96243 3.5 9 3.5C12.0376 3.5 14.5 5.96243 14.5 9C14.5 10.2484 14.0841 11.3996 13.3833 12.3226L16.2803 15.2197C16.5732 15.5126 16.5732 15.9874 16.2803 16.2803C15.9874 16.5732 15.5126 16.5732 15.2197 16.2803L12.3226 13.3833ZM13 9C13 11.2091 11.2091 13 9 13C6.79086 13 5 11.2091 5 9C5 6.79086 6.79086 5 9 5C11.2091 5 13 6.79086 13 9Z"
+          />
+        </svg>
+        <form >
+          <label for="search"></label>
+          <input aria-label="Input your search text" id="search" name="search" type="text" placeholder="Search" />
+        </form>
+       
+      </div>
+
+      <div class="notification">
+        <button
+          aria-haspopup="true"
+          aria-expanded="false"
+          id="notification-bell"
+          class="notification-bell"
+          aria-label="notification-bell"
+          aria-controls="notification-alert"
+          onclick="toggleNotificationAlerts(event);spotlightItem('filter-alerts');"
+        >
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="#E3E3E3"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M7.25203 14.4239L4.8061 14.1427C2.95144 13.9295 2.42542 11.4844 4.02838 10.5274L4.0933 10.4886C4.966 9.96761 5.50045 9.02609 5.50045 8.00969V7.5C5.50045 5.01472 7.51517 3 10.0005 3C12.4857 3 14.5005 5.01472 14.5005 7.5V8.00969C14.5005 9.02609 15.0349 9.96761 15.9076 10.4886L15.9725 10.5274C17.5755 11.4844 17.0495 13.9295 15.1948 14.1427L12.652 14.435V14.8C12.652 16.2912 11.4432 17.5 9.95203 17.5C8.46086 17.5 7.25203 16.2912 7.25203 14.8V14.4239ZM11.152 14.5H8.75203V14.8C8.75203 15.4627 9.28929 16 9.95203 16C10.6148 16 11.152 15.4627 11.152 14.8V14.5ZM8.00045 13H12.0005L15.0235 12.6525C15.453 12.6032 15.5748 12.0369 15.2036 11.8153L15.1387 11.7766C15.0591 11.7291 14.9815 11.6793 14.9057 11.6273C14.7506 11.521 14.6036 11.4055 14.4651 11.2818C14.4405 11.2598 14.4162 11.2377 14.3922 11.2152C13.5144 10.395 13.0005 9.23833 13.0005 8.00969V7.5C13.0005 5.84315 11.6573 4.5 10.0005 4.5C8.3436 4.5 7.00045 5.84315 7.00045 7.5V8.00969C7.00045 9.23833 6.48651 10.395 5.60871 11.2152C5.58469 11.2377 5.56039 11.2598 5.53583 11.2818C5.39734 11.4055 5.25029 11.521 5.09523 11.6273C5.01945 11.6793 4.94176 11.7291 4.86222 11.7766L4.79729 11.8153C4.4261 12.0369 4.5479 12.6032 4.97739 12.6525L8.00045 13Z"
+            />
+          </svg>
+        </button>
+
+        <button
+          id="profile"
+          aria-label="profile"
+          aria-haspopup="true"
+          aria-expanded="false"
+          class="notification-content"
+          aria-controls="notification-menu"
+          onclick="toggleNotificationMenu(event);spotlightFirstMenuItem('notification-menu');"
+        >
+          <p class="notification-content--username">Davii Collections</p>
+          <div class="notification-content--user-initials">DC</div>
+        </button>
+      </div>
+
+      <div
+        id="notification-alert"
+        class="notification-alert popup"
+        aria-labelledby="notification-bell"
+      >
+        <div class="notification-alert--header" aria-label="alerts">
+          <p class="notification-alert--header--text">Alerts</p>
+          <div class="notification-alert--header--buttons">
+            <button id="filter--alerts" tabindex="0" aria-label="filter alerts">
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="#616161"
+                  d="M3 6C3 5.58579 3.33579 5.25 3.75 5.25H16.25C16.6642 5.25 17 5.58579 17 6C17 6.41421 16.6642 6.75 16.25 6.75H3.75C3.33579 6.75 3 6.41421 3 6Z"
+                />
+                <path
+                  fill="#616161"
+                  d="M6.75 14C6.75 13.5858 7.08579 13.25 7.5 13.25H12.5C12.9142 13.25 13.25 13.5858 13.25 14C13.25 14.4142 12.9142 14.75 12.5 14.75H7.5C7.08579 14.75 6.75 14.4142 6.75 14Z"
+                />
+                <path
+                  fill="#616161"
+                  d="M5.5 9.25C5.08579 9.25 4.75 9.58579 4.75 10C4.75 10.4142 5.08579 10.75 5.5 10.75H14.5C14.9142 10.75 15.25 10.4142 15.25 10C15.25 9.58579 14.9142 9.25 14.5 9.25H5.5Z"
+                />
+              </svg>
+            </button>
+
+            <button id="mark-alerts" aria-label="Alerts marked as read">
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="#616161"
+                  d="M13.2803 9.03033C13.5732 8.73744 13.5732 8.26256 13.2803 7.96967C12.9874 7.67678 12.5126 7.67678 12.2197 7.96967L9.25 10.9393L8.03033 9.71967C7.73744 9.42678 7.26256 9.42678 6.96967 9.71967C6.67678 10.0126 6.67678 10.4874 6.96967 10.7803L8.71967 12.5303C9.01256 12.8232 9.48744 12.8232 9.78033 12.5303L13.2803 9.03033Z"
+                />
+                <path
+                  fill="#616161"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10ZM15.5 10C15.5 13.0376 13.0376 15.5 10 15.5C6.96243 15.5 4.5 13.0376 4.5 10C4.5 6.96243 6.96243 4.5 10 4.5C13.0376 4.5 15.5 6.96243 15.5 10Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <ul class="notification-alert--main" aria-label="alerts list">
+          <li role="listitem">
+            <p>Alerts about your store and account will show here</p>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        role="menu"
+        id="notification-menu"
+        aria-labelledby="profile"
+        class="notification-menu popup"
+      >
+        <div class="notification-menu--header">
+          <button class="notification-menu--header--profile" tabindex="0" role="menuitem">
+            <div class="notification-menu--header--profile--initials">DC</div>
+            <p class="notification-menu--header--profile--username">Davii Collections</p>
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke="#303030"
+                stroke-width="1.33333"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.3332 4L5.99984 11.3333L2.6665 8"
+              />
+            </svg>
+          </button>
+          <a
+            target="_blank"
+            role="menuitem"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            aria-label="Check out all stores"
+            class="notification-menu--header--stores"
+          >
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#303030"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M13.257 3H6.74302C6.35944 3 5.9971 3.17611 5.76012 3.47772L3.37394 6.51468C3.13169 6.823 3 7.20375 3 7.59586V8.25C3 9.31867 3.60958 10.245 4.5 10.7001V15.25C4.5 16.2165 5.2835 17 6.25 17H13.75C14.7165 17 15.5 16.2165 15.5 15.25V10.7001C16.3904 10.245 17 9.31867 17 8.25V7.76879C17 7.26465 16.8307 6.77511 16.5192 6.3787L14.2399 3.47772C14.0029 3.17611 13.6406 3 13.257 3ZM13 15.5H13.75C13.8881 15.5 14 15.3881 14 15.25V11C13.212 11 12.5014 10.6686 12 10.1375C11.4986 10.6686 10.788 11 10 11C9.21199 11 8.50138 10.6686 8 10.1375C7.49862 10.6686 6.78801 11 6 11V15.25C6 15.3881 6.11193 15.5 6.25 15.5H10V13C10 12.4477 10.4477 12 11 12H12C12.5523 12 13 12.4477 13 13V15.5ZM6 9.5H5.75C5.05964 9.5 4.5 8.94036 4.5 8.25V7.59586C4.5 7.53985 4.51881 7.48545 4.55342 7.44141L6.86453 4.5H13.1355L15.3397 7.30543C15.4436 7.43757 15.5 7.60075 15.5 7.76879V8.25C15.5 8.94036 14.9404 9.5 14.25 9.5H14C13.3096 9.5 12.75 8.94036 12.75 8.25V7.75C12.75 7.33579 12.4142 7 12 7C11.5858 7 11.25 7.33579 11.25 7.75V8.25C11.25 8.94036 10.6904 9.5 10 9.5C9.30964 9.5 8.75 8.94036 8.75 8.25V7.75C8.75 7.33579 8.41421 7 8 7C7.58579 7 7.25 7.33579 7.25 7.75V8.25C7.25 8.94036 6.69036 9.5 6 9.5Z"
+              />
+            </svg>
+            <p>All stores</p>
+          </a>
+        </div>
+
+        <div class="notification-menu--main">
+          <a
+            target="_blank"
+            role="menuitem"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            aria-label="Visit our Help Center"
+            class="notification-menu--header--link"
+          >
+            Help Center
+          </a>
+          <a
+            target="_blank"
+            role="menuitem"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            aria-label="Check out our change log"
+            class="notification-menu--header--link"
+          >
+            Changelog
+          </a>
+          <a
+            target="_blank"
+            role="menuitem"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            aria-label="Join our Community forums"
+            class="notification-menu--header--link"
+          >
+            Community forums
+          </a>
+          <a
+            target="_blank"
+            role="menuitem"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            aria-label="Hire a Shopify Partner"
+            class="notification-menu--header--link"
+          >
+            Hire a Shopify Partner
+          </a>
+          <a
+            target="_blank"
+            role="menuitem"
+            rel="noopener noreferrer"
+            aria-label="Keyboard shortcuts"
+            href="https://admin.shopify.com"
+            class="notification-menu--header--link"
+          >
+            Keyboard shortcuts
+          </a>
+        </div>
+
+        <div class="notification-menu--footer">
+          <a
+            target="_blank"
+            role="menuitem"
+            id="profile-link"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification-menu--header--link"
+            aria-label="Your Fullname: David Micheal, and email: davidmicheal@gmail.com"
+          >
+            <h4 class="fullname">David Micheal</h4>
+            <span class="email-address">davidmicheal@gmail.com</span>
+          </a>
+          <a
+            target="_blank"
+            role="menuitem"
+            rel="noopener noreferrer"
+            aria-label="Manage your account"
+            href="https://admin.shopify.com"
+            class="notification-menu--header--link"
+          >
+            Manage account
+          </a>
+          <a
+            target="_blank"
+            role="menuitem"
+            aria-label="Log out"
+            rel="noopener noreferrer"
+            href="https://admin.shopify.com"
+            class="notification-menu--header--link"
+          >
+            Log out
+          </a>
+        </div>
+      </div>
+    </header>
+    <!-- Main section -->
+    <main>
+        <section class="trial-alert-section">
+            <div class="trial-alert">
+                <p class="trial-alert-msg">
+                    <span aria-label="Extend your trial for 1 dollar a month for 3 months on select plans.">
+                        Extend your trial for $1/month for 3 months on select plans.
+                      </span>
+                      <button
+                class="trial-alert-close mobile"
+                aria-label="cancel trial option"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill="#E3E3E3"
+                    d="M13.9697 15.0303C14.2626 15.3232 14.7374 15.3232 15.0303 15.0303C15.3232 14.7374 15.3232 14.2626 15.0303 13.9697L11.0607 10L15.0303 6.03033C15.3232 5.73744 15.3232 5.26256 15.0303 4.96967C14.7374 4.67678 14.2626 4.67678 13.9697 4.96967L10 8.93934L6.03033 4.96967C5.73744 4.67678 5.26256 4.67678 4.96967 4.96967C4.67678 5.26256 4.67678 5.73744 4.96967 6.03033L8.93934 10L4.96967 13.9697C4.67678 14.2626 4.67678 14.7374 4.96967 15.0303C5.26256 15.3232 5.73744 15.3232 6.03033 15.0303L10 11.0607L13.9697 15.0303Z"
+                  />
+                </svg>
+              </button>
+                </p>
+                <div class="trial-alert-options">
+                    <a
+                      target="_blank"
+                      class="btn-2"
+                      rel="noopener noreferrer"
+                      href="https://shopify.com/pricing"
+                      >Select a plan</a
+                    >
+          
+                    <button
+                      class="trial-alert-close desktop"
+                      aria-label="dismiss trial option"
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        fill="none"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill="#E3E3E3"
+                          d="M13.9697 15.0303C14.2626 15.3232 14.7374 15.3232 15.0303 15.0303C15.3232 14.7374 15.3232 14.2626 15.0303 13.9697L11.0607 10L15.0303 6.03033C15.3232 5.73744 15.3232 5.26256 15.0303 4.96967C14.7374 4.67678 14.2626 4.67678 13.9697 4.96967L10 8.93934L6.03033 4.96967C5.73744 4.67678 5.26256 4.67678 4.96967 4.96967C4.67678 5.26256 4.67678 5.73744 4.96967 6.03033L8.93934 10L4.96967 13.9697C4.67678 14.2626 4.67678 14.7374 4.96967 15.0303C5.26256 15.3232 5.73744 15.3232 6.03033 15.0303L10 11.0607L13.9697 15.0303Z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+            </div>
+        </section>
+        <!-- Task section wrapper -->
+       <section class="task-list-section">
+          <div class="task-list">
+            <header class="task-list-header">
+                <div class="task-list-header--content">
+                  <h1 class="task-list-header--heading">Setup guide</h1>
+                  <p class="task-list-header--subheading">
+                    Use this personalized guide to get your store up and running.
+                  </p>
+                  <div class="task-list-header--task-completion">
+                    <p id="progress-text" aria-label="0 out of 5 steps completed">0 / 5 completed</p>
+                    <progress id="tasks-completion" value="0" max="100" role="progressbar"></progress>
+                  </div>
+                </div>
+      
+                <button
+                  aria-expanded="false"
+                  onclick="openTaskLists()"
+                  id="task-list-header--arrow"
+                  aria-label="open setup tasks"
+                  aria-controls="task-list-sections"
+                >
+                  <img
+                    alt="icon arrow down"
+                    src="https://crushingit.tech/hackathon-assets/icon-arrow-down.svg"
+                  />
+                </button>
+              </header>
+              <!-- task-list items -->
+              <div id="task-list-items" class="task-list--items hidden"  aria-labelledby="task-list-header-arrow">
+                <!-- First task list -->
+                <section class="task-list-section-item active">
+                  <div class="task-list-section-item-content">
+                    <span class="indicator-status" aria-live="polite"></span>
+                    <button
+                      class="task-list-section-indicators"
+                      aria-label="Mark customize your online store as done"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-checkmark"
+                        onclick="onCheck(0, 'customize your online store')"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="#8A8A8A"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-dasharray="5 5"
+                        />
+                      </svg>
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-spinner"
+                      >
+                        <path
+                          stroke="#1C181D"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                        />
+                      </svg>
+                      <img
+                        alt=""
+                        aria-hidden="true"
+                        class="task-list-section-content-tick"
+                        onclick="unCheck(0, 'customize your online store')"
+                        src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+                      />
+                    </button>
+      
+                    <div class="task-list-section-content-text">
+                      <button
+                        aria-expanded="false"
+                        onclick="openTaskList(0)"
+                        class="task-list-section-heading"
+                      >
+                        Customize your online store
+                      </button>
+                      <p class="task-list-section-subheading">
+                        Choose a theme and add your logo, colors, and images to reflect your brand.<a
+                          role="link"
+                          target="_blank"
+                          class="learn-more"
+                          rel="noopener noreferrer"
+                          href="https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name"
+                          >Learn more</a
+                        >
+                      </p>
+                      <div class="task-list-section-buttons">
+                        <button class="btn-1">Customize theme</button>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <img
+                    alt="customize store illustration"
+                    class="task-list-section-illustration"
+                    src="https://crushingit.tech/hackathon-assets/customise-store.png"
+                  />
+                </section>
+                <!-- Second task list -->
+                <section class="task-list-section-item inactive">
+                  <div class="task-list-section-item-content">
+                    <span class="indicator-status" aria-live="polite"></span>
+                    <button
+                      class="task-list-section-indicators"
+                      aria-label="Mark add your first product as done"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-checkmark"
+                        onclick="onCheck(1, 'add your first product')"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="#8A8A8A"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-dasharray="5 5"
+                        />
+                      </svg>
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-spinner"
+                      >
+                        <path
+                          stroke="#1C181D"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                        />
+                      </svg>
+                      <img
+                        alt=""
+                        aria-hidden="true"
+                        class="task-list-section-content-tick"
+                        onclick="unCheck(1,'add your first product')"
+                        src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+                      />
+                    </button>
+      
+                    <div class="task-list-section-content-text">
+                      <button
+                        aria-expanded="false"
+                        onclick="openTaskList(1)"
+                        class="task-list-section-heading"
+                      >
+                         Add your first product
+                      </button>
+                      <p class="task-list-section-subheading">
+                        Write a description, add photos, and set pricing for the products you plan to
+                        sell.<a
+                          role="link"
+                          target="_blank"
+                          class="learn-more"
+                          rel="noopener noreferrer"
+                          href="https://help.shopify.com/en/manual/products/add-update-products"
+                          >Learn more</a
+                        >
+                      </p>
+                      <div class="task-list-section-buttons">
+                        <button class="btn-1">Add product</button>
+                        <button class="btn-3">Import product</button>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <img
+                    alt="product illustration"
+                    class="task-list-section-illustration"
+                    src="https://crushingit.tech/hackathon-assets/product.png"
+                  />
+                </section>
+                <!-- Third Task list -->
+                <section class="task-list-section-item inactive">
+                  <div class="task-list-section-item-content">
+                    <span class="indicator-status" aria-live="polite"></span>
+                    <button
+                      class="task-list-section-indicators"
+                      aria-label="Mark add a custom domain as done"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-checkmark"
+                        onclick="onCheck(2, 'add a custom domain')"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="#8A8A8A"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-dasharray="5 5"
+                        />
+                      </svg>
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-spinner"
+                      >
+                        <path
+                          stroke="#1C181D"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                        />
+                      </svg>
+                      <img
+                        alt=""
+                        aria-hidden="true"
+                        class="task-list-section-content-tick"
+                        onclick="unCheck(2,'add a custom domain')"
+                        src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+                      />
+                    </button>
+      
+                    <div class="task-list-section-content-text">
+                      <button
+                        aria-expanded="false"
+                        onclick="openTaskList(2)"
+                        class="task-list-section-heading"
+                      >
+                      Add a custom domain
+                      </button>
+                      <p class="task-list-section-subheading">
+                        Your current domain is 222219.myshopify.com but you can add a custom domain to
+                        help customers find your online store.<a
+                          role="link"
+                          target="_blank"
+                          class="learn-more"
+                          rel="noopener noreferrer"
+                          href="https://help.shopify.com/en/manual/domains"
+                          >Learn more</a
+                        >
+                      </p>
+                      <div class="task-list-section-buttons">
+                        <button class="btn-1">Add domain</button>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <img
+                    alt="set up Domain illustration"
+                    class="task-list-section-illustration"
+                    src="https://crushingit.tech/hackathon-assets/website.png"
+                  />
+                </section>
+                <!-- Fourth Task -->
+                <section class="task-list-section-item inactive">
+                  <div class="task-list-section-item-content">
+                    <span class="indicator-status" aria-live="polite"></span>
+                    <button
+                      class="task-list-section-indicators"
+                      aria-label="Mark name your store as done"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-checkmark"
+                        onclick="onCheck(3, 'add a custom domain')"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="#8A8A8A"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-dasharray="5 5"
+                        />
+                      </svg>
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-spinner"
+                      >
+                        <path
+                          stroke="#1C181D"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                        />
+                      </svg>
+                      <img
+                        alt=""
+                        aria-hidden="true"
+                        class="task-list-section-content-tick"
+                        onclick="unCheck(3,'name your store')"
+                        src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+                      />
+                    </button>
+      
+                    <div class="task-list-section-content-text">
+                      <button
+                        aria-expanded="false"
+                        onclick="openTaskList(3)"
+                        class="task-list-section-heading"
+                      >
+                      Name your store
+                      </button>
+                      <p class="task-list-section-subheading">
+                        Your temporary store name is currently Davii collections. The store name appears
+                        in your admin and your online store.<a
+                          role="link"
+                          target="_blank"
+                          class="learn-more"
+                          rel="noopener noreferrer"
+                          href="https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name"
+                          >Learn more</a
+                        >
+                      </p>
+                      <div class="task-list-section-buttons">
+                        <button class="btn-1">Name store</button>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <img
+                    alt="name store illustration"
+                    class="task-list-section-illustration"
+                    src="https://crushingit.tech/hackathon-assets/name-store.png"
+                  />
+                </section>
+                <!-- Fifth Task -->
+                <section class="task-list-section-item inactive">
+                  <div class="task-list-section-item-content">
+                    <span class="indicator-status" aria-live="polite"></span>
+                    <button
+                      class="task-list-section-indicators"
+                      aria-label="Mark set up a payment provider as done"
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-checkmark"
+                        onclick="onCheck(4, 'set up a payment provider')"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="#8A8A8A"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-dasharray="5 5"
+                        />
+                      </svg>
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="task-list-section-content-spinner"
+                      >
+                        <path
+                          stroke="#1C181D"
+                          stroke-width="2.08333"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M22.0004 12C22.0004 13.9778 21.4139 15.9112 20.3151 17.5557C19.2162 19.2002 17.6545 20.4819 15.8272 21.2388C13.9999 21.9957 11.9893 22.1937 10.0495 21.8079C8.10965 21.422 6.32782 20.4696 4.9293 19.0711C3.53077 17.6725 2.57837 15.8907 2.19251 13.9509C1.80666 12.0111 2.00469 10.0004 2.76157 8.17317C3.51845 6.3459 4.80017 4.78412 6.44466 3.6853C8.08916 2.58649 10.0226 2 12.0004 2"
+                        />
+                      </svg>
+                      <img
+                        alt=""
+                        aria-hidden="true"
+                        class="task-list-section-content-tick"
+                        onclick="unCheck(4, 'set up a payment provider')"
+                        src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg"
+                      />
+                    </button>
+      
+                    <div class="task-list-section-content-text">
+                      <button
+                        aria-expanded="false"
+                        onclick="openTaskList(4)"
+                        class="task-list-section-heading"
+                      >
+                      Set up a payment provider
+                      </button>
+                      <p class="task-list-section-subheading">
+                        Choose a payment provider to start accepting payments. You'll need to create an
+                  account with the payment provider and set it up with your Shopify store.<a
+                          role="link"
+                          target="_blank"
+                          class="learn-more"
+                          rel="noopener noreferrer"
+                          href="https://help.shopify.com/en/manual/payments"
+                          >Learn more</a
+                        >
+                      </p>
+                      <div class="task-list-section-buttons">
+                        <button class="button-1 btn-1">Set up payment</button>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <img
+                    alt="payment illustration"
+                    class="task-list-section-illustration"
+                    src="https://crushingit.tech/hackathon-assets/payment.png"
+                  />
+                </section>
+                
+              </div>
+          </div>
+       </section>
+    </main>
+
+  <script src="./app.js"></script>
+  </body>
+</html>
