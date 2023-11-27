@@ -34,3 +34,10 @@ Clicking on the checkbox marks a step as completed, expanding the next incomplet
 Onboarding Progress Bar:
 
 Marking steps as completed or incomplete updates the onboarding progress bar accordingly.
+
+What i have Learnt
+By participating in this challenge, i have:
+
+- Gained hands-on experience in building an accessible web application.
+- Strengthen your understanding of JavaScript for interactive web development.
+- Learn best practices for creating a seamless and user-friendly dashboard experience.
