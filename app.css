@@ -1006,7 +1006,7 @@ progress::-webkit-progress-value {
       border-top-left-radius: 0;
     }
     .task-list-section-illustration{
-      display: none;
+      display: none ! important;
     }
   }
   
@@ -1104,7 +1104,7 @@ progress::-webkit-progress-value {
     }
   
     .task-list-section--illustration {
-      display: none;
+      display: none ! important;
     }
   
     .notification-menu {
