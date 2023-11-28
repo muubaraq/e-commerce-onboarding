@@ -556,7 +556,7 @@ progress {
     display: none;
     position: absolute;
     left: 90%;
-    margin-top: 6px;
+    top: 39%;
   }
 
   .trial-alert-close:focus-visible {
@@ -1055,10 +1055,6 @@ progress::-webkit-progress-value {
   
     .notification-content--username {
       display: none;
-    }
-  
-    main {
-      width: 100%;
     }
   
     .trial-alert {
